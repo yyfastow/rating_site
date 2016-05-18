@@ -1,0 +1,52 @@
+<!doctype html>
+{% load static from staticfiles %}
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/foundations.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+        {% block css %}{% endblock %}
+        <script src="{% static 'js/vendor/modernizr.js' %}"></script>
+        <script src="{% static 'js/vendor/foundation.min.js' %}"></script>
+        <meta class="foundation-mq">
+    </head>
+    <body>
+        <nav class="top-bar" role="navigation">
+            <section class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu role="menubar">
+                    <li class="menu-text">The Rating Site</li>
+                    <li class="has-submenu"></li>
+
+                </ul>
+            </section>
+        </nav>
+{% if messages %}
+            <div class="row">
+                <div class="small-6 small-centered columns">
+                    {% for message in messages %}
+                        <div class="callout {{ message.tags }}" data-closable>
+                            {{ message }}
+                            <button type="button" class="close-button" aria-label="Dismiss message">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+        <footer class="row columns">
+            <hr/>
+            <div class="small-6 columns">
+                <p>&copy; The Rating Site</p>
+            </div>
+        </footer>
+        <script src="{% static 'js/vendor/jquery-2.1.4.min.js' %}"></script>
+        <script src="{% static 'js/vendor/what-input.min.js' %}"></script>
+        <script src="{% static 'js/foundation.min.js' %}"></script>
+        {% block javascript %}{% endblock %}
+        <script>$(document).foundation();</script>
+    </body>
+</html>
