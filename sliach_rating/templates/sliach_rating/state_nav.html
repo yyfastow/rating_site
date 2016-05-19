@@ -1,0 +1,3 @@
+{% for state in states %}
+    <li><a href="{% url 'sluchim:search' %}">{{ state.state }}></a></li>
+{% endfor %}

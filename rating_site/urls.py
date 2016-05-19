@@ -21,7 +21,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
 urlpatterns = [
-    url(r'^sliach/', include('sliach_rating.urls', namespace='ratings')),
+    url(r'^sluchim/', include('sliach_rating.urls', namespace='sluchim')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.hello, name='home'),
 ]
