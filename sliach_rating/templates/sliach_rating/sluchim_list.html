@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Sluchim{% endblock %}
+
+{% block content %}
+    <div class="row columns">
+        {{ block.super }}
+    </div>
+    <div class="row">
+        {% for sliach in sluchim %}
+            <div class="small-6 columns">
+                <div class="callout">
+                    <h5><a href="{% url 'sluchim:details' pk=sliach.pk %}">{{ sliach.title }}</a></h5>
+                    <p>{{ sliach.name }}</p>
+                    <div class="card-copy">
+                        <p>{{ sliach.city }},  {{ sliach.state }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
