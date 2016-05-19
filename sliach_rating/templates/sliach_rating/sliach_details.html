@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ sliach.title }}{% endblock %}
+
+{% block content %}
+    <div class="row columns">
+        {{ block.super }}
+        <article>
+            <h1 class="">{{ sliach.title }}</h1>
+            <div class="callout secondary">
+                <h3>{{sliach.name }}</h3>
+            </div>
+            <p>Phone number: {{ sliach.phone }}</p>
+            <p>Address: {{sliach.address }}, </p>
+            <p>City:  {{sliach.city }}, {{ sliach.state }}, {{ sliach.country }}</p>
+        </article>
+    </div>
+{% endblock %}
