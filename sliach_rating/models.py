@@ -1,3 +1,4 @@
+from django.core import validators
 from django.core.urlresolvers import reverse
 from django.core.validators import RegexValidator
 from django.db import models
@@ -22,5 +23,15 @@ class Sluchim(models.Model):
     
     def __str__(self):
         return self.title
+
+
+class Rating(models.Model):
+    name = models.CharField(max_length=100, default="None")
+    rate = models.IntegerField()
+    comment = models.TextField()
+    sliach = models.ForeignKey(Sluchim)
+    
+    def __str__(self):
+        return self.name
     
 
