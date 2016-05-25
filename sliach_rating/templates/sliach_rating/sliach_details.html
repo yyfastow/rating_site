@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load sluchim_extras %}
 
 {% block title %}{{ sliach.title }}{% endblock %}
 
@@ -13,6 +14,28 @@
             <p>Phone number: {{ sliach.phone }}</p>
             <p>Address: {{sliach.address }}, </p>
             <p>City:  {{sliach.city }}, {{ sliach.state }}, {{ sliach.country }}</p>
+            
+            <h2>Rates:</h2>
+            {% if not sliach.rating_set.all %}
+                <div class="callout secondary">
+                    <h3>Sorry no one rated {{ sliach.title }}.</h3>
+                    <p></p>
+                    <h5>Be the first one to rate this sliach.</h5>
+                    <h5>Press on the <strong>comment</strong> button below to begin:</h5>
+                </div>
+            {% endif %}
+            {% if sliach.rating_set.all %}
+            <h4>Average rate: {{ sliach.average_p }}</h4>
+            {% endif %}
+            {% for rate in sliach.rating_set.all %}
+                <div class="callout secondary">
+                    <h3>{{rate.rate }}</h3>
+                    <p>{{ rate.comment }}</p>
+                    <p>{{ rate.name }}</p>
+                </div>
+            {% endfor %}
         </article>
+        <hr>
+        <a href="{% url 'sluchim:create_rate' sliach_pk=sliach.id %}" class="button">Comment</a>
     </div>
 {% endblock %}

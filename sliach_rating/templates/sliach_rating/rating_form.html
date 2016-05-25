@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}Rating Form for {{sliach.title}}{% endblock %}
+
+{% block content %}
+    <div class="row-columns">
+        <h1>Add a comment on {{ sliach.title }}</h1>
+        <form method="POST" action="">
+            {% csrf_token %}}
+            {{ form.as_p }}
+            <input type="submit" class="button" value="Save">
+        </form>
+    </div>
+{% endblock %}
+
+{% block css %}
+    {{ form.media.css }}
+{% endblock %}
+
+{% block javascript %}
+    {% load static from staticfiles %}
+    {{ form.media.js }}
+    <script src="{% static 'js/vendor/jquery.formset.js' %}"></script>
+    <script>
+        $('.answer-form').formset({
+            addText: 'add answer',
+            deleteText: 'remove'
+        });
+    </script>
+{% endblock %}
