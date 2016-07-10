@@ -15,7 +15,7 @@ class State(models.Model):
 class Sluchim(models.Model):
     title = models.CharField(max_length=200)
     name = models.CharField(max_length=100, default="bob")
-    phone = models.CharField(max_length=35, default="999-999-99999")
+    phone = models.CharField(max_length=35, default="999-999-9999")
     city = models.CharField(max_length=200)
     state = models.ForeignKey(State)
     picture = models.ImageField(default='./nick_XBVHPAg.jpg ')

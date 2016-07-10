@@ -11,12 +11,13 @@
             <div class="callout secondary">
                 <h3>{{sliach.name }}</h3>
             </div>
+            <img src="{ sliach.picture }}">
             <p>Phone number: {{ sliach.phone }}</p>
             <p>Address: {{sliach.address }}, </p>
             <p>City:  {{sliach.city }}, {{ sliach.state }}, {{ sliach.country }}</p>
             
             <h2>Rates:</h2>
-            {% if not sliach.rating_set.all %}
+            {% if not rates %}
                 <div class="callout secondary">
                     <h3>Sorry no one rated {{ sliach.title }}.</h3>
                     <p></p>
@@ -24,10 +25,10 @@
                     <h5>Press on the <strong>comment</strong> button below to begin:</h5>
                 </div>
             {% endif %}
-            {% if sliach.rating_set.all %}
-            <h4>Average rate: {{ sliach.average_p }}</h4>
+            {% if rates %}
+                <h4>Average rate: {{ rates|average_rate }}</h4>
             {% endif %}
-            {% for rate in sliach.rating_set.all %}
+            {% for rate in rates %}
                 <div class="callout secondary">
                     <h3>{{rate.rate }}</h3>
                     <p>{{ rate.comment }}</p>

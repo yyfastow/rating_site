@@ -13,10 +13,13 @@ def nav_state_list():
 
 
 @register.filter('average_rate')
-def average_rate(rating):
+def average_rate(rates):
     """ Estimates the average rate for given sliach """
-    average = 0
-    for rate in rating:
-        average += rate
+    total = 0
+    length = 0
+    for rate in rates:
+        total += rate.rate
+        length += 1
+    average = round(total/length)
     return average
         

@@ -20,7 +20,7 @@
 {% block javascript %}
     {% load static from staticfiles %}
     {{ form.media.js }}
-    <script src="{% static 'js/vendor/jquery.formset.js' %}"></script>
+    <script src="{% static '../../../rating_site/assets/js/vendor/jquery.formset.js' %}"></script>
     <script>
         $('.answer-form').formset({
             addText: 'add answer',
